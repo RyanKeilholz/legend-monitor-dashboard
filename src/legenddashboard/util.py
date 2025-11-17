@@ -25,7 +25,7 @@ logo_path = importlib.resources.files("legenddashboard") / "logos"
 
 sort_dict = {
     "String": {
-        "out_key": "{key}:{k:02}",
+        "out_key": "{k:02}",
         "primary_key": "location.string",
         "secondary_key": "location.position",
     },

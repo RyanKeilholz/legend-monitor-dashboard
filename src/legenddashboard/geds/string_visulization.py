@@ -298,14 +298,14 @@ def create_detector_plot(
 
 
 def plot_visu_usability(source, chan_dict, channel_map, xlabels):
-    color_dict = {"on": 2, "off": 0, "ac": 1}
+    color_dict = {"on": 2, "off": 0, "ac": 1, True: 3, False: 4}
     display_dict = {i: color_dict[chan_dict[i]["usability"]] for i in source.data["dn"]}
-    palette = ("red", "orange", "green")
+    palette = ("red", "orange", "green", "blue", "yellow")
     ctitle = "Usability"
-    ticker = FixedTicker(ticks=[0.3, 1.0, 1.7], tags=["red", "orange", "green"])
+    ticker = FixedTicker(ticks=[0.3, 1.0, 1.7, 2.0, 2.3], tags=["red", "orange", "green",  "blue", "yellow"])
     formatter = CustomJSTickFormatter(
         code="""
-        var mapping = {0.3: "off", 1.0: "ac", 1.7: "on"};
+        var mapping = {0.3: "off", 1.0: "ac", 1.7: "on",2.0: "True", 2.3: "False"};
         return mapping[tick];
     """
     )
@@ -319,6 +319,7 @@ def plot_visu_usability(source, chan_dict, channel_map, xlabels):
         formatter=formatter,
         boolean_scale=True,
     )
+
 
 
 def plot_visu_processable(source, chan_dict, channel_map, xlabels):
